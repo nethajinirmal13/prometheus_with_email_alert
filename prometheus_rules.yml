@@ -1,0 +1,20 @@
+groups:
+  - name: example-alerts
+    rules:
+    - alert: HighTemperature
+      expr: server_temperature_celsius > 50
+      for: 1m
+      labels:
+        severity: critical
+      annotations:
+        summary: "High temperature detected on server"
+        description: "The temperature on the server has exceeded 75°C for more than 1 minute."
+
+    - alert: HighRequestRate
+      expr: rate(app_requests_total[1m]) > 1
+      for: 1m
+      labels:
+        severity: warning
+      annotations:
+        summary: "High request rate detected"
+        description: "The request rate has exceeded 100 requests per minute over the last 5 minutes."
